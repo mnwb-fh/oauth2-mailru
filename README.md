@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/packagist/l/jokerov/oauth2-mailru.svg)](https://packagist.org/packages/jokerov/oauth2-mailru)
 
 This package provides [Mail.ru](https://oauth.mail.ru/) integration for [OAuth2 Client](https://github.com/thephpleague/oauth2-client) by the League.
+For more information on Mail.Ru OAuth, please refer to its [documentation](https://oauth.mail.ru/docs).
 
 ## Installation
 
