@@ -1,5 +1,5 @@
 {
-    "name": "jokerov/oauth2-mailru",
+    "name": "mnwb/oauth2-mailru",
     "description": "Mail.ru OAuth2 Client Provider for The PHP League OAuth2-Client",
     "license": "MIT",
     "authors": [
@@ -20,7 +20,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": ">=8.0",
         "league/oauth2-client": "^2.3"
     },
     "require-dev": {
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Jokerov\\OAuth2\\Client\\Provider\\": "src/"
+            "mnwb\\OAuth2\\Client\\Provider\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Jokerov\\OAuth2\\Client\\Test\\Provider\\": "test/"
+            "mnwb\\OAuth2\\Client\\Test\\Provider\\": "test/"
         }
     }
 }
