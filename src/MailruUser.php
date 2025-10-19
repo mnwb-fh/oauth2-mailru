@@ -4,7 +4,7 @@ namespace mnwb\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
-class MailruResourceOwner implements ResourceOwnerInterface
+class MailruUser implements ResourceOwnerInterface
 {
     /**
      * Response
