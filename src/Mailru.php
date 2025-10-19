@@ -63,6 +63,6 @@ class Mailru extends AbstractProvider
      */
     protected function createResourceOwner(array $response, AccessToken $token): ResourceOwnerInterface
     {
-        return new MailruResourceOwner($response);
+        return new MailruUser($response);
     }
 }
