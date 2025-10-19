@@ -1,6 +1,6 @@
 <?php
 
-namespace Jokerov\OAuth2\Client\Provider;
+namespace mnwb\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
@@ -33,7 +33,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     public function getId(): ?string
     {
-        return $this->getResponseValue('id');
+        return $this->getResponseValue('uid');
     }
 
     /**
@@ -46,25 +46,15 @@ class MailruResourceOwner implements ResourceOwnerInterface
         return $this->getResponseValue('email');
     }
 
-    /**
-     * Application ClientID
-     *
-     * @return string|null
-     */
-    public function getApplicationClientId(): ?string
-    {
-        return $this->getResponseValue('client_id');
-    }
 
     /**
      * User's gender
-     * m - male, f - female
      *
      * @return string|null
      */
     public function getGender(): ?string
     {
-        return $this->getResponseValue('gender');
+        return $this->getResponseValue('sex');
     }
 
     /**
@@ -74,7 +64,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     public function getName(): ?string
     {
-        return $this->getResponseValue('name');
+        return $this->getResponseValue('first_name').(($this->getResponseValue('first_name') && $this->getResponseValue('last_name')) ? ' ' : '').$this->getResponseValue('last_name');
     }
 
     /**
@@ -84,7 +74,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     public function getNickname(): ?string
     {
-        return $this->getResponseValue('nickname');
+        return $this->getResponseValue('nick');
     }
 
     /**
@@ -98,6 +88,16 @@ class MailruResourceOwner implements ResourceOwnerInterface
     }
 
     /**
+     * Get locale.
+     *
+     * @return string|null
+     */
+    public function getLocale(): ?string
+    {
+        return $this->getResponseValue('location')['city']['name'].(($this->getResponseValue('location')['city']['name'] && $this->getResponseValue('location')['country']['name']) ? ', ' : '').$this->getResponseValue('location')['country']['name'];
+    }
+
+    /**
      * User's last name
      *
      * @return string|null
@@ -108,17 +108,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * User's locale
-     *
-     * @return string|null
-     */
-    public function getLocale(): ?string
-    {
-        return $this->getResponseValue('locale');
-    }
-
-    /**
-     * User's birthday
+     * User's birthday dd.mm.YYYY
      *
      * @return string|null
      */
@@ -134,7 +124,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     public function getAvatar(): ?string
     {
-        return $this->getResponseValue('image');
+        return $this->getResponseValue('pic_big');
     }
 
     /**
@@ -142,7 +132,7 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     public function toArray(): array
     {
-        return $this->response;
+        return $this->response[0];
     }
 
     /**
@@ -152,8 +142,6 @@ class MailruResourceOwner implements ResourceOwnerInterface
      */
     private function getResponseValue($key)
     {
-        return $this->response[$key] ?? null;
+        return $this->response[0][$key] ?? null;
     }
 }
-
-
