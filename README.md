@@ -9,13 +9,13 @@ For more information on Mail.Ru OAuth, please refer to its [documentation](https
 ## Installation
 
 ```sh
-composer require jokerov/oauth2-mailru
+composer require mnwb/oauth2-mailru
 ```
 
 ## Usage
 
 ```php
-$provider = new Jokerov\OAuth2\Client\Provider\Mailru([
+$provider = new mnwb\OAuth2\Client\Provider\Mailru([
     'clientId'     => 'de8ad9b26d4de22c3adc4d72b9bf31af',
     'clientSecret' => '380c6afa85df4a7f1d40525e6be42e01',
     'redirectUri'  => 'https://example.com/oauth2-endpoint',
