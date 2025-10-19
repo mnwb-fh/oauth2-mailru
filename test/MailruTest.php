@@ -3,8 +3,8 @@ namespace Jokerov\OAuth2\Client\Test\Provider;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use Jokerov\OAuth2\Client\Provider\Mailru;
-use Jokerov\OAuth2\Client\Provider\MailruResourceOwner;
+use mnwb\OAuth2\Client\Provider\Mailru;
+use mnwb\OAuth2\Client\Provider\MailruUser;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -21,7 +21,7 @@ class MailruTest extends TestCase
     /**
      * Mail.ru instance provider
      *
-     * @var Jokerov\OAuth2\Client\Provider\Mailru
+     * @var mnwb\OAuth2\Client\Provider\Mailru
      */
     protected $provider;
 
@@ -61,7 +61,7 @@ class MailruTest extends TestCase
      */
     public function testGetBaseAccessTokenUrl()
     {
-        $this->assertEquals('https://oauth.mail.ru/token', $this->provider->getBaseAccessTokenUrl([]));
+        $this->assertEquals('https://connect.mail.ru/oauth/token', $this->provider->getBaseAccessTokenUrl([]));
     }
 
     /**
@@ -129,7 +129,7 @@ class MailruTest extends TestCase
     }
 
     /**
-     * Test MailruResourceOwner
+     * Test MailruUser
      *
      * @return void
      */
@@ -151,7 +151,7 @@ class MailruTest extends TestCase
                  ->willReturn($response);
 
         $resource = $provider->getResourceOwner($token);
-        $this->assertInstanceOf(MailruResourceOwner::class, $resource);
+        $this->assertInstanceOf(MailruUser::class, $resource);
         $this->assertEquals('123456679876543', $resource->getId());
         $this->assertEquals('test@test.ru', $resource->getEmail());
         $this->assertEquals('Test Testov', $resource->getName());
