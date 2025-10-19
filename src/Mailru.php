@@ -2,7 +2,7 @@
 
 namespace mnwb\OAuth2\Client\Provider;
 
-ovider\AbstractProvider;
+use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessToken;
